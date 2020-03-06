@@ -4,7 +4,7 @@
   
   
   exports.getNicknamesList =  function (nickname) {
-    nicknameList = [];
+    let nicknameList = [];
     let dataset=getDataset(nickname.length + 1);
   
     for (let j = 0; j < Math.pow(2, nickname.length +1 ); j++) {
@@ -25,7 +25,7 @@
     let arrNickname = nickname.split('');
     let arrTestNickname = [];
   
-    for(let i = 0; i< arrNickname.length; i++) {
+    for(let i = 0; i < arrNickname.length; i++) {
       arrTestNickname[2*i] = ' ';
       arrTestNickname[2*i+1] = arrNickname[i];
     }
