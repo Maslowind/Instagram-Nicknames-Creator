@@ -1,19 +1,21 @@
   exports.getNicknameSymbols =function (email) {
     return email.substr(0, email.indexOf('@'))    
   };
- 
+  
 
+
+  
   exports.getNicknamesList =  function (nickname) {
     let nicknameList = [];
-    arrTestNickname = getWorkArray(nickname);
+    arrTestNickname = getWorkArray(nickname);//Получаем массив элементов никнейма с местами под пропуски для потенциальных точек
     for (let j = 0; j < Math.pow(2, nickname.length - 1); j++) { 
-      let dotBinary=j.toString(2);
-      for (let i = 0; i < dotBinary.length; i++) {
-        if (dotBinary[i] == 1) arrTestNickname[2 * i + 1] = '.';
-        else if (dotBinary[i] == 0) arrTestNickname[2 * i + 1] = '';
+      let dotBinary=j.toString(2);//Получаем порядковый номер очередной комбинации в двоичной форме
+      for (let i = 0; i <  nickname.length - 1; i++) {
+        if (dotBinary[dotBinary.length - i - 1] == 1) arrTestNickname[2 * i + 1] = '.';//расставляем точки
+        else if (dotBinary[dotBinary.length - i - 1] == 0) arrTestNickname[ 2 * i + 1] = '';//расставляем пропуски        
       }
-       let another_one_nickname = arrTestNickname.join('');
-       nicknameList.push (another_one_nickname);         
+       let another_one_nickname = arrTestNickname.join('');//соединяем очередной никнейм воедино
+       nicknameList.push (another_one_nickname); //добавляем в список
      }
   
      return  nicknameList;  
